@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #f5f4ed;
+  --bg-surface: #faf9f5;
+  --bg-dark: #141413;
+  --text-primary: #141413;
+  --text-secondary: #5e5d59;
+  --text-tertiary: #87867f;
+  --text-on-dark: #faf9f5;
+  --accent: #c96442;
+  --accent-light: #d97757;
+  --border: #f0eee6;
+  --border-warm: #e8e6dc;
+  --ring: #d1cfc5;
+  --shadow-color: rgba(0,0,0,0.06);
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: #e8e6dc;
+  color: var(--text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--ring); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* ── Focus ring ─────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Section divider ─────────────────────────────── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Accent pill ─────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-warm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* ── Card ────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+
+/* ── Button — Primary ───────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: var(--accent);
+  color: var(--bg-surface);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 3px rgba(201,100,66,0.25), 0 0 0 0;
+}
+
+.btn-primary:hover {
+  background: #b8573a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201,100,66,0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary svg {
+  flex-shrink: 0;
+}
+
+/* ── Button — Secondary ─────────────────────────── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 1px solid var(--border-warm);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface);
+  border-color: var(--text-tertiary);
+}
+
+/* ── Badge ───────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-check {
+  background: #e8f5ec;
+  color: #2d6a3f;
+}
+
+.badge-pro {
+  background: #f5f0e8;
+  color: var(--accent);
+}
+
+/* ── FAQ Accordion ─────────────────────────────── */
+.faq-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-primary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: background 0.15s ease;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { display: none; }
+
+.faq-item summary:hover {
+  background: var(--bg-primary);
+}
+
+.faq-item summary svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: var(--text-tertiary);
+}
+
+.faq-item[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ── Testimonial card ─────────────────────────────── */
+.testimonial-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-warm);
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--border-warm);
+  font-family: Georgia, serif;
+}
+
+/* ── Steps ──────────────────────────────────────── */
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
